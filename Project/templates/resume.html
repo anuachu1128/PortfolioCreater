@@ -1,0 +1,210 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <title>Resume-Ann Maria John</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"></link>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#1d2124">
+    <div class="container-fluid">
+      <a class="navbar-brand" style="font-weight:bold; color:#b2ad56;">PortfolioCreater</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          
+          <li class="nav-item">
+            <a href="/homePage/" class="nav-link navactive  " style="color:white; font-weight: bold;" aria-current="page">Home</a>
+          </li>
+            <li class="nav-item">
+                <a href="/fill/" class="nav-link navactive  " style="color:white; font-weight: bold;" aria-current="page">Add/Edit Resume</a>
+            </li>
+            
+            <li class="nav-item">
+                <a href="/resume/" class="nav-link navactive  " style="color:white; font-weight: bold;" aria-current="page">View Resume</a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills justify-content-end ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle navactive text-white" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Welcome {{user.username}}</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                <li><a class="dropdown-item" href="/logout/">Logout</a></li>
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <body style="background-color: #333;" >
+    
+      <div class="container py-3" id="headerContainer">
+        <div class="row">
+          <div class="col-md-3 text-md-center text-center mb-3">
+            <img class="rounded-circle " src="{% static 'image.jpeg' %}" alt="Profile Photo" width="50%"> 
+          </div>
+          <div class="col-md-9 text-md-start mt-3 ">
+            <h1 class="fw-bold" >{{ name }}</h1>
+            <p class="fw-normal fs-4">{{ title }}</p>
+          </div>  
+        </div>
+      </div>
+
+      <div class="container" id="headerNavigation">
+        <div class="row">
+          <nav class="nav mx-3">
+            <div class="col-md">
+              <a class="nav-link text-black" href=""><b>Email: </b>{{ email }}</a>
+            </div>
+            <div class="col-md">
+              <a class="nav-link disabled text-black"><b>Phone: </b> {{ mobile }}<br/></a>
+            </div>
+            <div class="col-md">
+              <a class="nav-link text-black" href="https://www.linkedin.com/in/ann-maria-john-537b681aa/"><b>LinkedIn: </b>{{ linkedIn }}></a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    <main class="container px-5">
+      <div class="row">
+        <div class="col-md-5 mt-5 ml-3">
+          <h4> PROFILE SUMMARY</h4>
+          <p >{{ profile }}
+          </p>
+          <h4 class="mt-4">AREAS OF INTEREST</h4>
+          <p>
+            {{ areasOfInterest1 }}</br>
+            {{ areasOfInterest2 }}</br>
+            {{ areasOfInterest3 }}</br>
+            {{ areasOfInterest4 }}</br>
+          </p>  
+        </div>
+        <div class="col-md-7 mt-5">
+          <h4> ACADEMICS </h4>
+          <p class="border-top border-primary pt-3 ">
+              <b>{{ academics_1_institute }}</b><br/>
+              Program: {{ academics_1_program }} <br/>
+              Dates From: {{ academics_1_startDate }} - {{ academics_1_endDate }}<br/>
+              CGPA: {{ academics_1_mark }}
+          </p>
+          <p>
+            <b>{{ academics_2_institute }}</b><br/>
+            Board: {{ academics_2_program }}<br/>
+            Dates From: {{ academics_2_startDate }} - {{ academics_2_endDate }}<br/>
+            Percentage: {{ academics_2_mark }}
+        </p>
+          <p>
+              <b>{{ academics_3_institute }}</b><br/>
+              Board: {{ academics_3_program }}<br/>
+              Dates From: {{ academics_3_startDate }} - {{ academics_3_endDate }}<br/>
+              Percentage: {{ academics_3_mark }}
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 mt-3">
+          <h4>ACHIEVEMENTS</h4>
+          <p>
+            1. {{ achievement1 }}</br>
+            {% if achievement2 %}
+              2. {{ achievement2 }}</br>
+            {% elif achievement3 %}
+              3. {{ achievement3 }}</br>
+            {% elif achievement4 %}
+              4. {{ achievement4 }}
+            {% endif %}
+          </p>
+        </div>
+        <div class="col-md-7 mt-3">
+          <h4>TECHNICAL SKILLS</h4>
+          <p class="border-top border-primary pt-3">
+            <b>Programming Languages: </b>{{ programmingLanguages }}<br/>   
+            <b>Tools and IDE: </b>{{ tools }}<br/>
+            <b>Operating Systems: </b>{{ os }}
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          <h4 class="mt-4">LANGUAGES KNOWN</h4>
+          <p>
+            {{ language1 }}</br>
+            {{ language2 }}</br>
+            {{ language3 }}</br>
+          </p>
+          <h4 class="mt-2">ADDRESS</h4>
+          <p>{{ address }}
+          </p>
+        </div>
+        <div class="col-md-7 mt-3">
+          <h4 style="color: purple"> PROJECTS AND WORKS UNDERTAKEN </h4>
+          <p class="border-top border-primary pt-3">
+            <b>{{ project1_title }}</b><br/>
+            Tools Used: {{ project1_toolUsed }}
+          </p>
+
+          <p>
+            <b>{{ project2_title }}</b><br/>
+            Tools Used: {{ project2_toolUsed }}
+          </p>
+          {% if project3_title %}
+          <p>
+            <b>{{ project3_title }}</b><br/>
+            Tools Used: {{ project3_toolUsed }}
+          </p>
+
+          {% elif project4_title %}
+          <p>
+            <b>{{ project4_title }}</b><br/>
+            Tools Used: {{ project4_toolUsed }}
+          </p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5 mt-3"> 
+          <h4>STRENGTH</h4>
+          <p>
+            1. {{ strength1 }}</br>
+            2. {{ strength2 }}</br>
+            {% if strength3 %}
+              3. {{ strength3 }}</br>
+            {% elif strength4 %}
+              4. {{ strength4 }}</br>
+            {% elif strength5 %}
+              5. {{ strength5 }}</br>
+            {% elif strength6 %}
+              6. {{ strength6 }}</br>
+            {% elif strength7 %}
+              7. {{ strength7 }}</br>
+            {% elif strength8 %}
+              8. {{ strength8 }}</br>
+            {% endif %}
+          </p>
+           
+        </div>
+        <div class="col-md-7 mt-3">
+          {% if paper_1 %}
+          <h4> PAPERS AND PUBLICATIONS </h4>
+          <p class="border-top border-primary pt-3 "><i>{{ paper_1 }}</i></p>
+          {% elif paper_2 %}
+          <p>
+             <i>{{ paper_2 }}</i> 
+          </p>
+          {% endif %}
+          
+        </div>
+      </div>
+    </main> 
+  </body>
+</html>
